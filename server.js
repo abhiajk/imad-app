@@ -58,7 +58,7 @@ var htmlcontent=`
     </div>
 </body>
 </html>`;
-return htmltemplate;
+return htmlcontent;
 }
 
 
