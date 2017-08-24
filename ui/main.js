@@ -31,6 +31,6 @@ submit.onclick=function(){
    var ul=document.getElementById("namelist");
    ul.innerHTML=list;
   }}}; 
-   request.open('GET','http://jabhijithabhi.imad.hasura-app.io/submit-name?name=',true);
+   request.open('GET','http://jabhijithabhi.imad.hasura-app.io/submit-name?name='+Name,true);
    request.send(null);  
 };
