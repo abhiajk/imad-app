@@ -3,8 +3,10 @@ var element=document.getElementById("main-text");
 element.innerHTML="new value";
 var img=document.getElementById('pic');
 var marginLeft=0;
-img.onclick = function(){
+var moveRight = function(){
     marginLeft=marginLeft+10;
     img.style.marginLeft=marginLeft+'px';
-    setInterval(moveRight,100);
-};
+   };
+   img.onclick=function(){
+       setInterval(moveRight,100);
+   }
