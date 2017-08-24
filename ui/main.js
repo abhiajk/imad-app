@@ -14,12 +14,12 @@ button.onclick = function () {
    request.open('GET','http://jabhijithabhi.imad.hasura-app.io/counter',true);
    request.send(null);
 };
-var nameinput =document.getElementById("name");
-var Name=nameinput.value;
+
 var submit=document.getElementById("submit_btn");
 submit.onclick=function(){
+    var nameinput =document.getElementById("name");
+var Name=nameinput.value;
      var request = new XMLHttpRequest();
-    
     request.onreadystatechange = function(){
     if(request.readyState === XMLHttpRequest.DONE)  {
         if(request.status === 200){
