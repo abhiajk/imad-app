@@ -104,7 +104,7 @@ pool.query("SELECT*FROM article WHERE title='"+req.params.articleName+"'",functi
     if(err){
         res.status(500).send(err.toString());
     }else{
-        if(results.rows.length===0){
+        if(result.rows.length===0){
             res.status(404).send('article not found');        
             }else{
                 var articleData = result.rows[0];
