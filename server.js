@@ -11,30 +11,7 @@ var config = {
 };
 var app = express();
 app.use(morgan('combined'));
-var articles={
-    'article-one':{
-    title:' Article-one-Abhijith',
-    heading:'Article one',
-    date:'aug 27 2017',
-    content:`   
-    <p>This is content for my first article This is content for my first article This is content for my first article This is content for my first article
-      </p>
-       <p>This is content for my first article This is content for my first article This is content for my first article This is content for my first article
-       </p>
-       <p>This is content for my first article This is content for my first article This is content for my first article This is content for my first article
-       </p>`},
-      'article-two':{ 
-       title:' Article-two-Abhijith',
-    heading:'Article two',
-    content:`
-          <p>This is content for my second article.
-        </p>`},
-        'article-four':{ title:' Article-four-Abhijith',
-    heading:'Article four',
-    content:`
-         <p>This is content for my fourth article.
-        </p>`},
-      };
+
         function createtemplate(data){
           var title=data.title;
           var heading=data.heading;
