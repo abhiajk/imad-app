@@ -59,6 +59,9 @@ var htmlcontent=`
         ${heading}
     </h1>
     <div>
+    ${date}
+    </div>
+    <div>
        ${content}
     </div>
     </div>
