@@ -59,7 +59,7 @@ var htmlcontent=`
         ${heading}
     </h1>
     <div>
-    ${date}
+    ${date.toDateString()}
     </div>
     <div>
        ${content}
