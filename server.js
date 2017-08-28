@@ -80,7 +80,7 @@ app.post('/create-user',function(req,res){
 app.post('/login',function(req,res){
    var username = req.body.username;
    var password = req.body.password;
-   pool.query('SELECT * from "user" username=$1',[username],function(req,res){
+   pool.query('SELECT * FROM "user" WHERE username=$1',[username],function(req,res){
              if(err){
        res.status(500).send(err.toString());
    }else{
