@@ -13,7 +13,7 @@ var config = {
 };
 var app = express();
 app.use(morgan('combined'));
-app.use(body-parser.json());
+app.use(bodyParser.json());
 
         function createtemplate(data){
           var title=data.title;
