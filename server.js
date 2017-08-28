@@ -54,6 +54,30 @@ return htmlcontent;
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+
+function hash(input,salt){
+    var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
+    return hashed.toString('hex');
+}
+app.get('/hash/:input',function(req,res){
+    var hashedstring=hash(req.params.input,'this is some string');
+    res.send(hashedstring);
+});
+app.post('/create-user',function(req,res){
+    var username = req.body.username;
+    var password = req.body.password;
+    var dbstring = hash(password,salt);
+    var salt = crypto.getRandomBytes(128).toString('hex');
+    pool.query('INSERT INTO "user"(username,password) VALUES ($1,$2)',[username,dbstring],function(err,result){
+        if(err){
+       res.status(500).send(err.toString());
+   }else{
+       res.send('user succesfully created:'+username);
+   }  
+    });
+});
+
+
 var pool = new Pool(config);
 app.get('/test-db',function(req,res){
    //make a request
@@ -68,27 +92,6 @@ app.get('/test-db',function(req,res){
    });
 });
 
-function hash(input,salt){
-    var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
-    return hashed.toString('hex');
-}
-app.get('/hash/:input',function(req,res){
-    var hashedstring=hash(req.params.input,'this is some string');
-    res.send(hashedstring);
-});
-app.post('/create-user',function(req,res){
-    var username = req.body.username;
-    var password = req.body.password;
-    var dbstring = hash(password,salt);
-    var salt = crypto.randomBytes(128).toString('hex');
-    pool.query('INSERT INTO "user"(username,password) VALUES ($1,$2)',[username,dbstring],function(err,result){
-        if(err){
-       res.status(500).send(err.toString());
-   }else{
-       res.send('user succesfully created:'+username);
-   }  
-    });
-});
 
 
 var counter =0;
