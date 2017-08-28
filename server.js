@@ -57,7 +57,7 @@ app.get('/', function (req, res) {
 
 function hash(input,salt){
     var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
-    return hashed.toString('hex');
+    return ["pbkdf2","10000","salt",hashed.toString('hex')];
 }
 app.get('/hash/:input',function(req,res){
     var hashedstring=hash(req.params.input,'this is some string');
@@ -65,7 +65,6 @@ app.get('/hash/:input',function(req,res){
 });
 app.post('/create-user',function(req,res){
   
-    var id = req.body.id;
       var username = req.body.username;
     var password = req.body.password;
     var salt = crypto.randomBytes(128).toString('hex');
@@ -78,7 +77,9 @@ app.post('/create-user',function(req,res){
    }  
     });
 });
-
+app.post('/login',function(req,res){
+    
+});
 
 var pool = new Pool(config);
 app.get('/test-db',function(req,res){
